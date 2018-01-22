@@ -1,0 +1,36 @@
+.menu-container {
+  z-index: 998;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+}
+
+li {
+  cursor: pointer;
+  float: left;
+  padding: 5px 5px;
+
+}
+
+li > a::after {
+  content: ' |';
+}
+
+li:last-child > a::after {
+  content: '';
+}
+
+li a {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+@media only screen and (max-width : 680px) {
+  .menu-container {
+    display: none;
+  }
+}
