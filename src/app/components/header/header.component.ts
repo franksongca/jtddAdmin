@@ -7,20 +7,22 @@ import { ActionsService } from './../../services/actions.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor() { }
-  sideMenuStatus = 0;
+  constructor() {
+    ActionsService.onSideMenuStatusUpdated.subscribe((status) => {
+      this.sideMenuStatus = status;
+    });
+  }
+  sideMenuStatus;
 
   ngOnInit() {
     this.hideSideMenu();
   }
 
   toggleMenu() {
-    this.sideMenuStatus = 1 - this.sideMenuStatus;
     ActionsService.toggleSideMenu();
   }
 
   hideSideMenu() {
-    this.sideMenuStatus = 0;
     ActionsService.hideSideMenu();
   }
 }

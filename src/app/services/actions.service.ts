@@ -4,6 +4,8 @@ import { Injectable, EventEmitter } from '@angular/core';
 export class ActionsService {
   static onMenuItemSelected: EventEmitter<Number> = new EventEmitter();
   static onSideMenuToggle: EventEmitter<any> = new EventEmitter();
+  static onSideMenuStatusUpdated: EventEmitter<number> = new EventEmitter();
+  protected static SideMenuStatus = 0;
 
   constructor() { }
 
@@ -23,11 +25,18 @@ export class ActionsService {
   }
 
   public static toggleSideMenu() {
+    ActionsService.SideMenuStatus = 1 - ActionsService.SideMenuStatus;
     ActionsService.onSideMenuToggle.emit();
+    ActionsService.updateStatus();
   }
 
   public static hideSideMenu() {
+    ActionsService.SideMenuStatus = 0;
     ActionsService.onSideMenuToggle.emit({forceHide: true});
+    ActionsService.updateStatus();
   }
 
+  private static updateStatus() {
+    ActionsService.onSideMenuStatusUpdated.emit(ActionsService.SideMenuStatus);
+  }
 }
