@@ -1,2 +1,22 @@
 <app-header></app-header>
+<div class="page-container" [ngSwitch]="pageIndex">
+  <ng-template [ngSwitchCase]="pageIndexes?.HOME">
+    <app-home></app-home>
+  </ng-template>
+  <ng-template [ngSwitchCase]="pageIndexes?.RESOURCE_MANAGEMENT">
+    <app-resource-management></app-resource-management>
+  </ng-template>
+  <ng-template [ngSwitchCase]="pageIndexes?.CAROUSEL_MANAGEMENT">
+    <app-carousel-management></app-carousel-management>
+  </ng-template>
+  <ng-template [ngSwitchCase]="pageIndexes?.MEMBERS_MANAGEMENT">
+    <app-members-management></app-members-management>
+  </ng-template>
+  <ng-template [ngSwitchCase]="pageIndexes?.STAFF_MANAGEMENT">
+    <app-staff-management></app-staff-management>
+  </ng-template>
+  <ng-template [ngSwitchCase]="pageIndexes?.ACTIVITIES_LOGS">
+    <app-activities-logs></app-activities-logs>
+  </ng-template>
+</div>
 

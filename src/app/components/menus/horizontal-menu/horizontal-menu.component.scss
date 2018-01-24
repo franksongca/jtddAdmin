@@ -1,5 +1,8 @@
+@import './../../../../shared.scss';
+
 .menu-container {
   z-index: 998;
+  display: block;
 }
 
 ul {
@@ -29,7 +32,7 @@ li a {
   text-decoration: none;
 }
 
-@media only screen and (max-width : 680px) {
+@media only screen and (max-width : $break-point-width) {
   .menu-container {
     display: none;
   }

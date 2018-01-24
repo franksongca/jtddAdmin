@@ -1,10 +1,20 @@
 {
   "menu": [
-    {"id": 1, "name": "网页内容编辑"},
+    {"id": 0, "name": "首页"},
+    {"id": 1, "name": "网站资源管理"},
     {"id": 2, "name": "动态内容管理"},
     {"id": 3, "name": "会员管理"},
     {"id": 4, "name": "服务人员管理"},
-    {"id": 5, "name": "中心活动日记"},
-    {"id": 6, "name": "中心财务管理"}
-  ]
+    {"id": 5, "name": "中心活动日记"}
+  ],
+
+  "pageIndexes": {
+    "HOME": 0,
+    "RESOURCE_MANAGEMENT": 1,
+    "CAROUSEL_MANAGEMENT": 2,
+    "MEMBERS_MANAGEMENT": 3,
+    "STAFF_MANAGEMENT": 4,
+    "ACTIVITIES_LOGS": 5
+  }
+
 }

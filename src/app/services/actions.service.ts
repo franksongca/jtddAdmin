@@ -18,6 +18,7 @@ export class ActionsService {
   public static set Action(action) {
     ActionsService._action = action;
     ActionsService.onMenuItemSelected.emit(action);
+    ActionsService.hideSideMenu();
   }
 
   public static doAction(action) {

@@ -10,6 +10,12 @@ import { SideMenuComponent } from './components/menus/side-menu/side-menu.compon
 
 import { ConfigService } from './services/config.service';
 import { ActionsService } from './services/actions.service';
+import { HomeComponent } from './components/pages/home/home.component';
+import { ResourceManagementComponent } from './components/pages/resource-management/resource-management.component';
+import { CarouselManagementComponent } from './components/pages/carousel-management/carousel-management.component';
+import { MembersManagementComponent } from './components/pages/members-management/members-management.component';
+import { StaffManagementComponent } from './components/pages/staff-management/staff-management.component';
+import { ActivitiesLogsComponent } from './components/pages/activities-logs/activities-logs.component';
 
 
 @NgModule({
@@ -18,6 +24,12 @@ import { ActionsService } from './services/actions.service';
     HeaderComponent,
     HorizontalMenuComponent,
     SideMenuComponent,
+    HomeComponent,
+    ResourceManagementComponent,
+    CarouselManagementComponent,
+    MembersManagementComponent,
+    StaffManagementComponent,
+    ActivitiesLogsComponent,
   ],
   imports: [
     BrowserModule,

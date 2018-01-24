@@ -1,0 +1,26 @@
+@import './../shared.scss';
+
+.page-container {
+  position: absolute;
+  top: $banner-height-large;
+  width: 100%;
+  height: calc(100vh - #{$banner-height-large});
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: lightyellow;
+}
+
+
+@media only screen and (max-width : $break-point-width) {
+  .page-container {
+    top: $banner-height-small;
+    height: calc(100vh - #{$banner-height-small});
+  }
+}
+
+@media only screen and (max-width : $break-small) {
+  .page-container {
+    top: $banner-height-smallest;
+    height: calc(100vh - #{$banner-height-smallest});
+  }
+}

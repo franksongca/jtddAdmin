@@ -11,8 +11,8 @@ export class MenuShared {
     });
   }
 
-  doAction(action) {
-    alert(action);
+  doAction(e, action) {
+    e.preventDefault();
     this.action = action;
     ActionsService.Action = action;
   }
