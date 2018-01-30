@@ -1,3 +1,60 @@
-<p>
-  resource-management works!
-</p>
+<div>
+  <div class="label-bar">
+    <div class="small-width fields">
+      <div class="id-field">ID</div>
+      <div class="key-field-small">Key</div>
+      <div class="edit-btn-field">EDIT</div>
+    </div>
+    <div class="medium-width fields">
+      <div class="id-field">ID</div>
+      <div class="key-field-medium">Key</div>
+      <div class="created-by-field">Created By</div>
+      <div class="last-edited-by-field">Last Edited By</div>
+      <div class="edit-btn-field">EDIT</div>
+    </div>
+    <div class="large-width fields">
+      <div class="id-field">ID</div>
+      <div class="key-field-medium">Key</div>
+      <div class="created-by-field">Created By</div>
+      <div class="created-on-field">Created On</div>
+      <div class="edited-by-field">Last Edited By</div>
+      <div class="edited-on-field">Last Edited On</div>
+      <div class="edit-btn-field">EDIT</div>
+    </div>
+  </div>
+
+  <div *ngFor="let item of list">
+    <div>
+      <div class="small-width fields">
+        <div class="id-field">{{item.id}}</div>
+        <div class="key-field-small">{{item.contentKey}}</div>
+        <div class="edit-btn-field"><button (click)="toggleEditing(item)"><span class="glyphicon glyphicon-edit"></span></button></div>
+      </div>
+      <div class="medium-width fields">
+        <div class="id-field">{{item.id}}</div>
+        <div class="key-field-medium">{{item.contentKey}}</div>
+        <div class="created-by-field">{{item.createdBy}}</div>
+        <div class="last-edited-by-field">{{item.lastEditedBy}}</div>
+        <div class="edit-btn-field"><button (click)="toggleEditing(item)"><span class="glyphicon glyphicon-edit"></span></button></div>
+      </div>
+      <div class="large-width fields">
+        <div class="id-field">{{item.id}}</div>
+        <div class="key-field-medium">{{item.contentKey}}</div>
+        <div class="created-by-field">{{item.createdBy}}</div>
+        <div class="created-on-field">{{item.createdOn}}</div>
+        <div class="edited-by-field">{{item.lastEditedBy}}</div>
+        <div class="edited-on-field">{{item.lastEditedOn}}</div>
+        <div class="edit-btn-field"><button (click)="toggleEditing(item)"><span class="glyphicon glyphicon-edit"></span></button></div>
+      </div>
+    </div>
+    <div class="fields">
+      <div class="id-field">ZH</div>
+      <div class="input-field"><span *ngIf="!item.editing">{{item.contentZH}}</span><span *ngIf="item.editing"><input [(ngModel)]="item.contentZH"></span></div>
+    </div>
+    <div class="fields">
+      <div class="id-field">EN</div>
+      <div class="input-field"><span *ngIf="!item.editing">{{item.contentEN}}</span><span *ngIf="item.editing"><input [(ngModel)]="item.contentEN"></span></div>
+    </div>
+  </div>
+</div>
+

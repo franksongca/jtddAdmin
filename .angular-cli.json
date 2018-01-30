@@ -26,9 +26,7 @@
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
-      },
-      "deployUrl": "/jtdd/",
-      "baseUrl": "/jtdd/"
+      }
     }
   ],
   "e2e": {

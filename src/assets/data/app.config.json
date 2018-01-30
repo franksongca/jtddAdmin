@@ -15,6 +15,9 @@
     "MEMBERS_MANAGEMENT": 3,
     "STAFF_MANAGEMENT": 4,
     "ACTIVITIES_LOGS": 5
-  }
+  },
 
+  "webServerRemoteURL": "http://68.66.205.236:3003/api/",
+  "webServerLocalURL": "http://localhost:3003/api/",
+  "environment": "local"
 }

@@ -12,7 +12,7 @@
       <a href="#" (click)="toggleMenu($event)"><span class="glyphicon glyphicon-th pull-left"></span></a>
     </div>
     <div class="log-in-out">
-      <button type="button" class="btn btn-default">{{loggedIn ? '退&nbsp;&nbsp;&nbsp;&nbsp;出' : '登&nbsp;&nbsp;&nbsp;&nbsp;录'}}</button>
+      <button type="button" class="btn btn-default" (click)="logInOut()">{{loggedIn ? '退&nbsp;&nbsp;&nbsp;&nbsp;出' : '登&nbsp;&nbsp;&nbsp;&nbsp;录'}}</button>
     </div>
   </div>
 </ng-container>

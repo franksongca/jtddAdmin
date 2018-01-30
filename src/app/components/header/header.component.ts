@@ -31,4 +31,10 @@ export class HeaderComponent implements OnInit {
     }
     ActionsService.hideSideMenu();
   }
+
+  logInOut() {
+    if (!this.loggedIn) {
+      ActionsService.openLoginModal();
+    }
+  }
 }

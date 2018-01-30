@@ -1,0 +1,45 @@
+.id-field {
+  width: 40px;
+}
+
+.edit-field {
+  width: 30px;
+}
+
+@media screen and (max-width: 480px) {
+  .small-width {
+    display: block;
+  }
+
+  .key-field-small {
+    width: calc(100vw - 88px);
+  }
+
+  .medium-width, .large-width {
+    display: none;
+  }
+}
+
+.input-field {
+  width: calc(100% - 50px);
+}
+
+.input-field input {
+  width: 100%;
+}
+
+.fields {
+  width: 100%;
+  padding: 3px;
+}
+
+.fields > div {
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.label-bar > div.fields > div {
+  background-color: black;
+  color: white;
+}
+
