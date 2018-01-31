@@ -1,49 +1,36 @@
 <div>
   <div class="label-bar">
-    <div class="small-width fields">
-      <div class="id-field">ID</div>
-      <div class="key-field-small">Key</div>
-      <div class="edit-btn-field">EDIT</div>
+    <div class="small-width fields title">
+      <div class="id-field">{{screenText.id}}</div>
+      <div class="key-field">{{screenText.key}}</div>
+      <div class="edit-btn-field">{{screenText.space}}</div>
     </div>
-    <div class="medium-width fields">
-      <div class="id-field">ID</div>
-      <div class="key-field-medium">Key</div>
-      <div class="created-by-field">Created By</div>
-      <div class="last-edited-by-field">Last Edited By</div>
-      <div class="edit-btn-field">EDIT</div>
-    </div>
-    <div class="large-width fields">
-      <div class="id-field">ID</div>
-      <div class="key-field-medium">Key</div>
-      <div class="created-by-field">Created By</div>
-      <div class="created-on-field">Created On</div>
-      <div class="edited-by-field">Last Edited By</div>
-      <div class="edited-on-field">Last Edited On</div>
-      <div class="edit-btn-field">EDIT</div>
+    <div class="large-width fields title">
+      <div class="id-field">{{screenText.id}}</div>
+      <div class="key-field">{{screenText.key}}</div>
+      <div class="created-by-field">{{screenText.createdBy}}</div>
+      <div class="created-on-field">{{screenText.createdOn}}</div>
+      <div class="last-edited-by-field">{{screenText.lastEditedBy}}</div>
+      <div class="last-edited-on-field">{{screenText.lastEditedOn}}</div>
+      <div class="edit-btn-field">{{screenText.space}}</div>
     </div>
   </div>
 
   <div *ngFor="let item of list">
+    <div class="input-group">
     <div>
-      <div class="small-width fields">
+      <div class="small-width fields content">
         <div class="id-field">{{item.id}}</div>
-        <div class="key-field-small">{{item.contentKey}}</div>
+        <div class="key-field"><span *ngIf="!item.editing">{{item.contentKey}}</span><span *ngIf="item.editing"><input [(ngModel)]="item.contentKey"></span></div>
         <div class="edit-btn-field"><button (click)="toggleEditing(item)"><span class="glyphicon glyphicon-edit"></span></button></div>
       </div>
-      <div class="medium-width fields">
+      <div class="large-width fields content">
         <div class="id-field">{{item.id}}</div>
-        <div class="key-field-medium">{{item.contentKey}}</div>
-        <div class="created-by-field">{{item.createdBy}}</div>
-        <div class="last-edited-by-field">{{item.lastEditedBy}}</div>
-        <div class="edit-btn-field"><button (click)="toggleEditing(item)"><span class="glyphicon glyphicon-edit"></span></button></div>
-      </div>
-      <div class="large-width fields">
-        <div class="id-field">{{item.id}}</div>
-        <div class="key-field-medium">{{item.contentKey}}</div>
+        <div class="key-field"><span *ngIf="!item.editing">{{item.contentKey}}</span><span *ngIf="item.editing"><input [(ngModel)]="item.contentKey"></span></div>
         <div class="created-by-field">{{item.createdBy}}</div>
         <div class="created-on-field">{{item.createdOn}}</div>
-        <div class="edited-by-field">{{item.lastEditedBy}}</div>
-        <div class="edited-on-field">{{item.lastEditedOn}}</div>
+        <div class="last-edited-by-field">{{item.lastEditedBy}}</div>
+        <div class="last-edited-on-field">{{item.lastEditedOn}}</div>
         <div class="edit-btn-field"><button (click)="toggleEditing(item)"><span class="glyphicon glyphicon-edit"></span></button></div>
       </div>
     </div>
@@ -56,5 +43,6 @@
       <div class="input-field"><span *ngIf="!item.editing">{{item.contentEN}}</span><span *ngIf="item.editing"><input [(ngModel)]="item.contentEN"></span></div>
     </div>
   </div>
+</div>
 </div>
 

@@ -1,31 +1,32 @@
+@import './../../../../shared.scss';
+
+$id-field-width: 40px;
+$edit-field-width: 30px;
+$normal-field-width: 80px;
+
+.small-width {
+  display: none;
+}
+
 .id-field {
-  width: 40px;
+  width: $id-field-width;
 }
 
 .edit-field {
-  width: 30px;
+  width: $edit-field-width;
 }
 
-@media screen and (max-width: 480px) {
-  .small-width {
-    display: block;
-  }
-
-  .key-field-small {
-    width: calc(100vw - 88px);
-  }
-
-  .medium-width, .large-width {
-    display: none;
-  }
+.created-by-field, .created-on-field, .last-edited-by-field, .last-edited-on-field {
+  width: $normal-field-width;
 }
 
 .input-field {
   width: calc(100% - 50px);
 }
 
-.input-field input {
+.input-field input, .key-field input {
   width: 100%;
+  border: 1px solid $input-box-border-color;
 }
 
 .fields {
@@ -43,3 +44,42 @@
   color: white;
 }
 
+.title > div {
+  text-align: center;
+}
+
+.input-group {
+  margin-top: 3px;
+  border: 1px solid #a94442;
+}
+
+.content > div {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: $break-point-width) {
+  .small-width {
+    display: block;
+  }
+
+  .key-field {
+    width: calc( 100vw - #{$id-field-width} - #{$edit-field-width} - 36px );
+  }
+
+  .large-width {
+    display: none;
+  }
+}
+
+@media screen and (min-width: $break-point-width1) {
+  .small-width {
+    display: none;
+  }
+  .large-width {
+    display: block;
+  }
+  .key-field {
+    width: calc( 100vw - #{$normal-field-width} - #{$normal-field-width} - #{$normal-field-width} - #{$normal-field-width} - #{$id-field-width} - #{$edit-field-width} - 50px);
+  }
+}
