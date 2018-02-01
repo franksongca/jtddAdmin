@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActionsService } from './../../services/actions.service';
+import { ConfigService } from './../../services/config.service';
 
 @Component({
   selector: 'app-header',
@@ -8,16 +9,22 @@ import { ActionsService } from './../../services/actions.service';
 })
 export class HeaderComponent implements OnInit {
   sideMenuStatus;
-  loggedIn;
+  loggedIn = ConfigService.isLoginned();
 
   constructor() {
     ActionsService.onSideMenuStatusUpdated.subscribe((status) => {
       this.sideMenuStatus = status;
     });
+
+    ConfigService.onLoggedIn.subscribe((isLoggedIn) => {
+      this.loggedIn = isLoggedIn;
+    });
   }
 
   ngOnInit() {
     this.hideSideMenu(null);
+
+    this.loggedIn = ConfigService.isLoginned();
   }
 
   toggleMenu(e) {
@@ -35,6 +42,10 @@ export class HeaderComponent implements OnInit {
   logInOut() {
     if (!this.loggedIn) {
       ActionsService.openLoginModal();
+    } else {
+      ConfigService.Logout();
+      // this.loggedIn = false;
+
     }
   }
 }

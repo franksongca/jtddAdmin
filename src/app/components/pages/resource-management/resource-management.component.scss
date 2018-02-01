@@ -40,8 +40,8 @@ $normal-field-width: 80px;
 }
 
 .label-bar > div.fields > div {
-  background-color: black;
-  color: white;
+  background-color: $title-background-color;
+  color: $title-text-color;
 }
 
 .title > div {
@@ -50,7 +50,7 @@ $normal-field-width: 80px;
 
 .input-group {
   margin-top: 3px;
-  border: 1px solid #a94442;
+  border: 1px solid $panel-border-color;
 }
 
 .content > div {

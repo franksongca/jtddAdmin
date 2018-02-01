@@ -89,13 +89,15 @@ export class AppComponent {
       if (result) {
         setTimeout(() => {
           this.webServicesService.login(result).subscribe((res) => {
-            alert('login: ' + JSON.stringify(res));
+            if (+res['error']) {
+              // TODO handle login error !!!!!!!
+            } else {
+              ConfigService.LoginInfo = res;
+            }
           });
         });
       }
     });
-
   }
-
 
 }
