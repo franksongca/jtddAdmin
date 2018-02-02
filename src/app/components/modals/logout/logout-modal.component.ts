@@ -4,17 +4,12 @@ import { Subject } from 'rxjs/Subject';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
-  selector: 'app-login-modal',
-  templateUrl: './login-modal.component.html',
-  styleUrls: ['./../shared-modal.component.scss', './login-modal.component.scss']
+  selector: 'app-logout',
+  templateUrl: './logout-modal.component.html',
+  styleUrls: ['./../shared-modal.component.scss', 'logout-modal.component.scss']
 })
-export class LoginModalComponent implements OnInit {
-  public onClose: Subject<any>;
-
-  loginPayload = {
-    userName: '',
-    password: ''
-  }
+export class LogoutModalComponent implements OnInit {
+  public onClose: Subject<boolean>;
 
   constructor(public modalRef: BsModalRef) { }
 
@@ -24,12 +19,12 @@ export class LoginModalComponent implements OnInit {
 
   close(e) {
     e.preventDefault();
-    this.onClose.next(null);
+    this.onClose.next(false);
     this.modalRef.hide();
   }
 
   submit(): void {
-    this.onClose.next(this.loginPayload);
+    this.onClose.next(true);
     this.modalRef.hide();
   }
 

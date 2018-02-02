@@ -5,7 +5,7 @@ export class ActionsService {
   static onMenuItemSelected: EventEmitter<Number> = new EventEmitter();
   static onSideMenuToggle: EventEmitter<any> = new EventEmitter();
   static onSideMenuStatusUpdated: EventEmitter<number> = new EventEmitter();
-  static onOpenLoginModal: EventEmitter<any> = new EventEmitter();
+  static onOpenModal: EventEmitter<string> = new EventEmitter();
   protected static SideMenuStatus = 0;
 
   constructor() { }
@@ -42,8 +42,8 @@ export class ActionsService {
     ActionsService.updateStatus();
   }
 
-  public static openLoginModal() {
-    ActionsService.onOpenLoginModal.emit();
+  public static openModal(name) {
+    ActionsService.onOpenModal.emit(name);
   }
 
 }

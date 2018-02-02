@@ -23,6 +23,8 @@ import { ActivitiesLogsComponent } from './components/pages/activities-logs/acti
 
 import { SimpleModalComponent } from './components/modals/simple/simple-modal.component';
 import { LoginModalComponent } from './components/modals/login-modal/login-modal.component';
+import { LogoutModalComponent } from './components/modals/logout/logout-modal.component';
+import { InputModalComponent } from './components/modals/input-modal/input-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { LoginModalComponent } from './components/modals/login-modal/login-modal
     StaffManagementComponent,
     ActivitiesLogsComponent,
     SimpleModalComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    LogoutModalComponent,
+    InputModalComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +63,8 @@ import { LoginModalComponent } from './components/modals/login-modal/login-modal
   entryComponents: [
     SimpleModalComponent,
     LoginModalComponent,
+    LogoutModalComponent,
+    InputModalComponent
   ],
   bootstrap: [AppComponent]
 })

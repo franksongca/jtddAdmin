@@ -1,0 +1,69 @@
+.input-title {
+  padding-top: 5px;
+  margin-left: 10px;
+  font-size: 25px;
+  vertical-align: center;
+}
+
+.close {
+  margin-top: 10px;
+  margin-right: 10px;
+  font-size: 30px;
+}
+
+.input-title, .input-icon, close-x {
+  display: inline-block;
+}
+
+.input-icon {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  height: 35px;
+}
+
+.top-bar {
+  border-bottom: 1px solid red;
+}
+
+.input-element {
+  width: 100%;
+  margin: 10px;
+}
+
+.input-element input {
+  margin-right: 10px;
+  width: 80%;
+}
+
+.body {
+  padding: 30px 10px;
+}
+
+.label-col {
+  text-align: right;
+}
+
+.value-col {
+  text-align: left;
+}
+
+.bottom-bar {
+  padding-bottom: 10px;
+  text-align: center;
+  border-top: 1px solid red;
+}
+
+.btn {
+  margin-top: 10px;
+  min-width: 110px;
+  max-width: 180px;
+  width: 80%;
+}
+
+.btn-col {
+  text-align: center;
+}
+
+[disabled] {
+  cursor: default !important;
+}

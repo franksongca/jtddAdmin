@@ -16,33 +16,50 @@
     </div>
   </div>
 
-  <div *ngFor="let item of list">
+  <div *ngFor="let item of list;">
     <div class="input-group">
-    <div>
-      <div class="small-width fields content">
-        <div class="id-field">{{item.id}}</div>
-        <div class="key-field"><span *ngIf="!item.editing">{{item.contentKey}}</span><span *ngIf="item.editing"><input [(ngModel)]="item.contentKey"></span></div>
-        <div class="edit-btn-field"><button (click)="toggleEditing(item)"><span class="glyphicon glyphicon-edit"></span></button></div>
+      <div>
+        <div class="small-width fields content">
+          <div class="id-field">{{item.zh.id}}</div>
+          <div class="key-field"><span *ngIf="!item.zh.editing">{{item.zh.resourceKey}}</span><span *ngIf="item.zh.editing"><input [(ngModel)]="item.zh.resourceKey"></span></div>
+          <div class="edit-btn-field"><button (click)="toggleEditing(item.zh)"><span class="glyphicon glyphicon-edit"></span></button></div>
+        </div>
+        <div class="large-width fields content">
+          <div class="id-field">{{item.zh.id}}</div>
+          <div class="key-field"><span *ngIf="!item.zh.editing">{{item.zh.resourceKey}}</span><span *ngIf="item.zh.editing"><input [(ngModel)]="item.zh.resourceKey"></span></div>
+          <div class="created-by-field">{{item.zh.createdBy}}</div>
+          <div class="created-on-field">{{item.zh.createdOn}}</div>
+          <div class="last-edited-by-field">{{item.zh.lastEditedBy}}</div>
+          <div class="last-edited-on-field">{{item.zh.lastEditedOn}}</div>
+          <div class="edit-btn-field"><button (click)="toggleEditing(item.zh)"><span class="glyphicon glyphicon-edit"></span></button></div>
+        </div>
       </div>
-      <div class="large-width fields content">
-        <div class="id-field">{{item.id}}</div>
-        <div class="key-field"><span *ngIf="!item.editing">{{item.contentKey}}</span><span *ngIf="item.editing"><input [(ngModel)]="item.contentKey"></span></div>
-        <div class="created-by-field">{{item.createdBy}}</div>
-        <div class="created-on-field">{{item.createdOn}}</div>
-        <div class="last-edited-by-field">{{item.lastEditedBy}}</div>
-        <div class="last-edited-on-field">{{item.lastEditedOn}}</div>
-        <div class="edit-btn-field"><button (click)="toggleEditing(item)"><span class="glyphicon glyphicon-edit"></span></button></div>
+      <div class="fields">
+        <div class="id-field">ZH</div>
+        <div class="input-field"><span *ngIf="!item.zh.editing">{{item.zh.content}}</span><span *ngIf="item.zh.editing"><input [(ngModel)]="item.zh.content"></span></div>
+      </div>
+      <div>
+        <div class="small-width fields content">
+          <div class="id-field">{{item.en.id}}</div>
+          <div class="key-field"><span *ngIf="!item.en.editing">{{item.en.resourceKey}}</span><span *ngIf="item.en.editing"><input [(ngModel)]="item.en.resourceKey"></span></div>
+          <div class="edit-btn-field"><button (click)="toggleEditing(item.en)"><span class="glyphicon glyphicon-edit"></span></button></div>
+        </div>
+        <div class="large-width fields content">
+          <div class="id-field">{{item.en.id}}</div>
+          <div class="key-field"><span *ngIf="!item.en.editing">{{item.en.resourceKey}}</span><span *ngIf="item.en.editing"><input [(ngModel)]="item.en.resourceKey"></span></div>
+          <div class="created-by-field">{{item.en.createdBy}}</div>
+          <div class="created-on-field">{{item.en.createdOn}}</div>
+          <div class="last-edited-by-field">{{item.en.lastEditedBy}}</div>
+          <div class="last-edited-on-field">{{item.en.lastEditedOn}}</div>
+          <div class="edit-btn-field"><button (click)="toggleEditing(item.en)"><span class="glyphicon glyphicon-edit"></span></button></div>
+        </div>
+      </div>
+      <div class="fields">
+        <div class="id-field">EN</div>
+        <div class="input-field"><span *ngIf="!item.en.editing">{{item.en.content}}</span><span *ngIf="item.en.editing"><input [(ngModel)]="item.en.content"></span></div>
       </div>
     </div>
-    <div class="fields">
-      <div class="id-field">ZH</div>
-      <div class="input-field"><span *ngIf="!item.editing">{{item.contentZH}}</span><span *ngIf="item.editing"><input [(ngModel)]="item.contentZH"></span></div>
-    </div>
-    <div class="fields">
-      <div class="id-field">EN</div>
-      <div class="input-field"><span *ngIf="!item.editing">{{item.contentEN}}</span><span *ngIf="item.editing"><input [(ngModel)]="item.contentEN"></span></div>
-    </div>
+
   </div>
-</div>
 </div>
 

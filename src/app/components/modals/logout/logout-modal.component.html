@@ -1,0 +1,19 @@
+<div class="top-bar">
+  <img src="./assets/images/logout-icon.png" class="modal-icon"><div class="modal-title">退出</div>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="body">
+  <div class="row input-element">
+    您确认要退出吗？
+  </div>
+</div>
+
+<div class="bottom-bar">
+  <div class="row">
+    <div class="col-xs-6 btn-col"><button type="button" class="btn btn-default" (click)="submit($event)">确&nbsp;&nbsp;&nbsp;&nbsp;认</button></div>
+    <div class="col-xs-6 btn-col"><button type="button" class="btn btn-primary" (click)="close($event)">取&nbsp;&nbsp;&nbsp;&nbsp;消</button></div>
+  </div>
+</div>

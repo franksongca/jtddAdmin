@@ -6,6 +6,8 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { SimpleModalComponent } from './components/modals/simple/simple-modal.component';
 import { LoginModalComponent } from './components/modals/login-modal/login-modal.component';
+import { LogoutModalComponent } from './components/modals/logout/logout-modal.component';
+import { InputModalComponent } from './components/modals/input-modal/input-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -32,8 +34,16 @@ export class AppComponent {
       this.pageIndex = pageIndex;
     });
 
-    ActionsService.onOpenLoginModal.subscribe(() => {
-      this.openLoginModal();
+    ActionsService.onOpenModal.subscribe((name) => {
+      switch (name) {
+        case 'login':
+          this.openLoginModal();
+          break;
+        case 'logout':
+          this.openLogoutModal();
+          break;
+
+      }
     });
   }
 
@@ -100,4 +110,31 @@ export class AppComponent {
     });
   }
 
+  openLogoutModal() {
+    this.bsModalRef = this.modalService.show(LogoutModalComponent);
+
+    this.bsModalRef.content.onClose.subscribe(result => {
+      console.log('results', result);
+      if (result) {
+        setTimeout(() => {
+          ConfigService.Logout();
+        });
+      }
+    });
+
+  }
+
+  openInputModal() {
+    this.bsModalRef = this.modalService.show(InputModalComponent);
+
+    this.bsModalRef.content.onClose.subscribe(result => {
+      console.log('results', result);
+      if (result) {
+        setTimeout(() => {
+          alert('logout: ');
+        });
+      }
+    });
+
+  }
 }

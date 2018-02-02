@@ -41,11 +41,9 @@ export class HeaderComponent implements OnInit {
 
   logInOut() {
     if (!this.loggedIn) {
-      ActionsService.openLoginModal();
+      ActionsService.openModal('login');
     } else {
-      ConfigService.Logout();
-      // this.loggedIn = false;
-
+      ActionsService.openModal('logout');
     }
   }
 }
