@@ -1,0 +1,24 @@
+<div class="top-bar">
+  <img src="./assets/images/input-fields-icon.png" class="modal-icon"><div class="modal-title">输入/修改/编辑文本资源键</div>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="body">
+  <div class="row input-element">
+    <div class="col-xs-5 label-col"><label>原文本资源键</label></div>
+    <div class="col-xs-7 value-col">{{option?.resourceKey}}</div>
+  </div>
+  <div class="row input-element">
+    <div class="col-xs-5 label-col"><label>文本资源键</label></div>
+    <div class="col-xs-7 value-col"><input type="text" [(ngModel)]="newKey" [attr.placeholder]="option?.resourceKey"></div>
+  </div>
+</div>
+
+<div class="bottom-bar">
+  <div class="row">
+    <div class="col-xs-6 btn-col"><button type="button" [disabled]="!validate()" class="btn btn-default" (click)="validate() && submit($event)">确&nbsp;&nbsp;&nbsp;&nbsp;认</button></div>
+    <div class="col-xs-6 btn-col"><button type="button" class="btn btn-primary" (click)="close($event)">取&nbsp;&nbsp;&nbsp;&nbsp;消</button></div>
+  </div>
+</div>

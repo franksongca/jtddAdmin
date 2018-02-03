@@ -1,85 +1,48 @@
 @import './../../../../shared.scss';
 
-$id-field-width: 40px;
-$edit-field-width: 30px;
-$normal-field-width: 80px;
-
-.small-width {
-  display: none;
-}
-
-.id-field {
-  width: $id-field-width;
-}
-
-.edit-field {
-  width: $edit-field-width;
-}
-
-.created-by-field, .created-on-field, .last-edited-by-field, .last-edited-on-field {
-  width: $normal-field-width;
-}
-
-.input-field {
-  width: calc(100% - 50px);
-}
-
-.input-field input, .key-field input {
-  width: 100%;
-  border: 1px solid $input-box-border-color;
-}
-
-.fields {
-  width: 100%;
-  padding: 3px;
-}
-
-.fields > div {
-  box-sizing: border-box;
-  display: inline-block;
-}
-
-.label-bar > div.fields > div {
-  background-color: $title-background-color;
-  color: $title-text-color;
-}
-
-.title > div {
-  text-align: center;
-}
+$key-field-height: 29px;
+$label-width: 100px;
 
 .input-group {
+  width: 100%;
   margin-top: 3px;
   border: 1px solid $panel-border-color;
 }
 
-.content > div {
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.key-field-container {
+  height: $key-field-height;
+  border: 1px solid lightgray;
 }
 
-@media screen and (max-width: $break-point-width) {
-  .small-width {
-    display: block;
-  }
-
-  .key-field {
-    width: calc( 100vw - #{$id-field-width} - #{$edit-field-width} - 36px );
-  }
-
-  .large-width {
-    display: none;
-  }
+.key-field-label {
+  display: inline-block;
+  text-align: center;
+  width: $label-width;
+  color: $title-text-color;
+  background-color: $title-background-color;
+  height: $key-field-height;
+  padding-top: 4px;
 }
 
-@media screen and (min-width: $break-point-width1) {
-  .small-width {
-    display: none;
-  }
-  .large-width {
-    display: block;
-  }
-  .key-field {
-    width: calc( 100vw - #{$normal-field-width} - #{$normal-field-width} - #{$normal-field-width} - #{$normal-field-width} - #{$id-field-width} - #{$edit-field-width} - 50px);
-  }
+.key-edit-btn {
+  font-size: 12px;
+}
+
+.edit-btn-field {
+  width: 20px;
+  margin-right: 9px;
+}
+
+.langl-col {
+  padding: 2px;
+  vertical-align: middle;
+  background-color: #5bc0de;
+  color: black;
+}
+
+.text-col {
+  padding: 5px;
+  width: 100%;
+  min-height: $key-field-height;
+  border: 1px solid lightgray;
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActionsService } from './../../../services/actions.service';
+import { ConfigService } from './../../../services/config.service';
 
 @Component({
   selector: 'app-resource-management',
@@ -7,26 +9,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResourceManagementComponent implements OnInit {
   screenText = {
-    id: '序号',
     key: '资源索引键',
-    space: '　　',
-    createdBy: '建立人',
-    createdOn: '建立日期',
-    lastEditedOn: '编辑人',
-    lastEditedBy: '编辑日期'
+    labelZh: '中　　文',
+    labelEn: '英　　文'
   };
 
-
   listOriginal = [
-    {resourceKey: 'TEXT-NEW-PAGE-A', language: 'en', id: '10000', editing: false, content: 'this is a text content.', createdOn: '2017-12-21', createdBy: 'Frank Song', lastEditedBy: 'Frank Song', lastEditedOn: '2017-12-21'},
-    {resourceKey: 'TEXT-NEW-PAGE-A', language: 'zh', id: '10001', editing: false, content: 'this is a text content.', createdOn: '2017-12-21', createdBy: 'Frank Song', lastEditedBy: 'Frank Song', lastEditedOn: '2017-12-21'},
-    {resourceKey: 'TEXT-NEW-PAGE-B', language: 'en', id: '10002', editing: false, contentZH: 'this is a text content.', createdOn: '2017-12-21', createdBy: 'Frank Song', lastEditedBy: 'Frank Song', lastEditedOn: '2017-12-21'},
-    {resourceKey: 'TEXT-NEW-PAGE-B', language: 'zh', id: '10003', editing: false, contentZH: 'this is a text content.', createdOn: '2017-12-21', createdBy: 'Frank Song', lastEditedBy: 'Frank Song', lastEditedOn: '2017-12-21'}
+    {resourceKey: 'TEXT-KEY-A', language: 'en', id: '10000', editing: false, content: 'this is a text content.', createdOn: '2017-12-21', createdBy: 'Frank Song', lastEditedBy: 'Frank Song', lastEditedOn: '2017-12-21'},
+    {resourceKey: 'TEXT-KEY-A', language: 'zh', id: '10001', editing: false, content: 'this is a text content.this is a text content.this is a text content.this is a text content.this is a text content.this is a text content.this is a text content.', createdOn: '2017-12-21', createdBy: 'Frank Song', lastEditedBy: 'Frank Song', lastEditedOn: '2017-12-21'},
+    {resourceKey: 'TEXT-KEY-B', language: 'en', id: '10002', editing: false, content: 'this is a text content.', createdOn: '2017-12-21', createdBy: 'Frank Song', lastEditedBy: 'Frank Song', lastEditedOn: '2017-12-21'},
+    {resourceKey: 'TEXT-KEY-B', language: 'zh', id: '10003', editing: false, content: 'this is a text content.', createdOn: '2017-12-21', createdBy: 'Frank Song', lastEditedBy: 'Frank Song', lastEditedOn: '2017-12-21'}
   ];
 
   list = [];
 
   constructor() {
+    ActionsService.onResourceKeyUpdated.subscribe((keys) => {
+      this.listOriginal.forEach((item) => {
+        if (item.resourceKey === keys.oldKey) {
+          item.resourceKey = keys.newKey;
+        }
+      });
+
+      this.sortResources();
+    });
+
+    this.sortResources();
+  }
+
+  ngOnInit() {
+  }
+
+  sortResources() {
+    this.list = [];
     this.listOriginal.sort((a, b) => {
       if (a.resourceKey < b.resourceKey) {
         return -1;
@@ -46,14 +61,23 @@ export class ResourceManagementComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  editResourceKey(record) {
+    if (ConfigService.isLoginned()) {
+      ActionsService.openModal('resourcekey', record);
+    } else {
+      ActionsService.openModal('simple', {
+        title: '提醒',
+        bodyMessage: '您还没有登录，请登录，然后再试。',
+        type: 'not-login-warning',
+        cancelBtnText: '确认',
+        icon: 'warning'
+      });
+    }
   }
 
-  toggleEditing(item) {
-    this.list.forEach((listItem) => {
-      listItem.zh.editing = false;
-      listItem.en.editing = false;
-    });
-    item.editing = true;
+  editResourceText(resourceRecord) {
+    alert('B');
+
   }
+
 }

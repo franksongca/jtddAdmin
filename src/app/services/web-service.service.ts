@@ -18,6 +18,17 @@ export class WebServicesService {
     return this.http.post(this.webServiceUrl + 'login', cred);
   }
 
+  updateTextResourceKey(oldKey, newKey) {
+    return this.http.post(this.webServiceUrl + 'update',
+      {
+        action: 'update-resource-text-key',
+        token: ConfigService.LoginInfo.token,
+        oldKey: oldKey,
+        newKey: newKey
+      }
+    );
+  }
+
   // shutdownProcess(id) {
   //   return this.http.get(this.config.webServerURL + ':' + this.config.port + '/api/shutdown/:' + id);
   // }

@@ -1,19 +1,22 @@
-<ng-template #template>
-  <div class="modal-header">
-    <h2 class="modal-title pull-left"><span class="glyphicon glyphicon-{{options.type}}"></span>&nbsp;{{options.title}}</h2>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="body-text">
-      {{options.bodyText}}
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="confirm()" *ngIf="!options.singleButton" >{{options.buttonText.confirm}}</button>
-    <button type="button" class="btn btn-primary" (click)="decline()" >{{options.buttonText.decline}}</button>
-  </div>
-</ng-template>
+<div class="top-bar">
+  <img src="./assets/images/{{option?.icon}}-icon.png" class="modal-icon"><div class="modal-title">{{option?.title}}</div>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 
-<ng-container *ngTemplateOutlet="template"></ng-container>
+<div class="body">
+  <div class="row input-element">
+    {{option?.bodyMessage}}
+  </div>
+</div>
+
+<div class="bottom-bar">
+  <div class="row" *ngIf="!!option?.confirmBtnText && !!option?.cancelBtnText">
+    <div class="col-xs-6 btn-col"><button type="button" class="btn btn-default" (click)="submit($event)">{{option?.confirmBtnText}}</button></div>
+    <div class="col-xs-6 btn-col"><button type="button" class="btn btn-primary" (click)="close($event)">{{option?.cancelBtnText}}</button></div>
+  </div>
+  <div class="row" *ngIf="!(!!option?.confirmBtnText && !!option?.cancelBtnText) && (!!option?.confirmBtnText || !!option?.cancelBtnText)">
+    <div class="col-xs-12 btn-col"><button type="button" class="btn btn-primary" (click)="close($event)">{{option?.cancelBtnText}}</button></div>
+  </div>
+</div>

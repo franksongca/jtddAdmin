@@ -6,23 +6,12 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 @Component({
   selector: 'app-simple-modal',
   templateUrl: './simple-modal.component.html',
-  styleUrls: ['./simple-modal.component.css']
+  styleUrls: ['./../shared-modal.component.scss', './simple-modal.component.css']
 })
 export class SimpleModalComponent implements OnInit {
-  options = {
-    title: '',
-    bodyText: '',
-    buttonText: {
-      confirm: 'Yes',
-      decline: 'No'
-    },
-    singleButton: false,
-    type: 'alert'
-  }
-  title: string = 'default title';
-  bodyText: string = 'default body';
+  public onClose: Subject<any>;
 
-  public onClose: Subject<boolean>;
+  option;
 
   constructor(public modalRef: BsModalRef) {
 
@@ -33,12 +22,13 @@ export class SimpleModalComponent implements OnInit {
   }
 
   confirm(): void {
-    this.onClose.next(true);
+
+    this.onClose.next({result: true, type: this.option.type});
     this.modalRef.hide();
   }
 
-  decline(): void {
-    this.onClose.next(false);
+  close(): void {
+    this.onClose.next({result: false, type: this.option['type']});
     this.modalRef.hide();
   }
 }

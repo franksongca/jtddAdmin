@@ -24,6 +24,7 @@ import { ActivitiesLogsComponent } from './components/pages/activities-logs/acti
 import { SimpleModalComponent } from './components/modals/simple/simple-modal.component';
 import { LoginModalComponent } from './components/modals/login-modal/login-modal.component';
 import { LogoutModalComponent } from './components/modals/logout/logout-modal.component';
+import { ResourceKeyModalComponent } from './components/modals/resource-key-modal/resource-key-modal.component';
 import { InputModalComponent } from './components/modals/input-modal/input-modal.component';
 
 @NgModule({
@@ -41,6 +42,7 @@ import { InputModalComponent } from './components/modals/input-modal/input-modal
     SimpleModalComponent,
     LoginModalComponent,
     LogoutModalComponent,
+    ResourceKeyModalComponent,
     InputModalComponent
   ],
   imports: [
@@ -64,6 +66,7 @@ import { InputModalComponent } from './components/modals/input-modal/input-modal
     SimpleModalComponent,
     LoginModalComponent,
     LogoutModalComponent,
+    ResourceKeyModalComponent,
     InputModalComponent
   ],
   bootstrap: [AppComponent]

@@ -7,6 +7,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { SimpleModalComponent } from './components/modals/simple/simple-modal.component';
 import { LoginModalComponent } from './components/modals/login-modal/login-modal.component';
 import { LogoutModalComponent } from './components/modals/logout/logout-modal.component';
+import { ResourceKeyModalComponent } from './components/modals/resource-key-modal/resource-key-modal.component';
 import { InputModalComponent } from './components/modals/input-modal/input-modal.component';
 
 @Component({
@@ -34,61 +35,34 @@ export class AppComponent {
       this.pageIndex = pageIndex;
     });
 
-    ActionsService.onOpenModal.subscribe((name) => {
-      switch (name) {
+    ActionsService.onOpenModal.subscribe((res) => {
+      switch (res.name) {
         case 'login':
           this.openLoginModal();
           break;
         case 'logout':
           this.openLogoutModal();
           break;
-
+        case 'resourcekey':
+          this.openResourceKeyModal(res['option']);
+          break;
+        case 'simple':
+          this.openSimpleModal(res['option']);
+          break;
       }
     });
   }
 
-  openShutdownModal(id) {
-    this.bsModalRef = this.modalService.show(SimpleModalComponent);
-    this.bsModalRef.content.options = {
-      title: 'Shutdown Process',
-      bodyText: 'Are you sure to shutdown the process [ ' + id + ' ] ?',
-      singleButton: false,
-      buttonText: {
-        confirm: 'Yes',
-        decline: 'No'
-      },
-      type: 'question-sign'
-    };
-
-    this.bsModalRef.content.onClose.subscribe(result => {
-      console.log('results', result);
-      if (result) {
-        this.openSimpleModal('Error', 'Cannot shutdown the process [' + id + '].', 'alert');
-        // setTimeout(() => {
-        //   this.webServicesService.shutdownProcess(id).subscribe((r) => {
-        //     if (r['error'] === 0) {
-        //       this.removeWorkerProcess(id);
-        //     } else {
-        //       this.openSimpleModal('Error', 'Cannot shutdown the process [' + id + '].', 'alert');
-        //     }
-        //   });
-        // });
-      }
-    });
-  }
-
-  openSimpleModal(title, message, type?) {
+  openSimpleModal(option) {
     this.bsModalRef1 = this.modalService.show(SimpleModalComponent);
-    this.bsModalRef1.content.options = {
-      title: title,
-      bodyText: message,
-      singleButton: true,
-      buttonText: {
-        confirm: '',
-        decline: 'OK'
-      },
-      type: type
-    };
+    this.bsModalRef1.content.option = option;
+
+    this.bsModalRef1.content.onClose.subscribe(result => {
+      console.log('results', result);
+      if (result.type === 'not-login-warning') {
+        this.openLoginModal();
+      }
+    });
   }
 
   openLoginModal() {
@@ -122,6 +96,11 @@ export class AppComponent {
       }
     });
 
+  }
+
+  openResourceKeyModal(option) {
+    this.bsModalRef = this.modalService.show(ResourceKeyModalComponent);
+    this.bsModalRef.content.option = option;
   }
 
   openInputModal() {
